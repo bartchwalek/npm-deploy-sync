@@ -1,2 +1,4 @@
-# npm-deploy-sync
-Library to deploy on a server using rsync.
+### Deploy - sync for Node using rsync.
+
+The library will allow deploying compiled code on a remote server using credentials and rsync and its options.
+
