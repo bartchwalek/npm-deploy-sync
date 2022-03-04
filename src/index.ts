@@ -1,4 +1,5 @@
 export class DeploySync {
+  public className = 'DeploySync';
   public constructor() {
     // Nop
   }
