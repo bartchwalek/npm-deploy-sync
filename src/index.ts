@@ -1,9 +1,12 @@
 class DeploySync {
 
-	public constructor() {
-	}
+        public constructor() {
+        }
 }
 
 let deploySync = new DeploySync();
 
 module.exports = deploySync;
+
+
+

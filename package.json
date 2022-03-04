@@ -1,12 +1,29 @@
 {
   "name": "npm-deploy-sync",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Deploy compiled code to server using rsync on linux",
+  "main": "lib/index.js",
   "scripts": {
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json"
+    "prepare": "npm run build",
+    "build": "tsc",
+    "start": "tsc && node lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["deploy", "rsync", "staging", "sync"],
+  "repository": "github:bartchwalek/npm-deploy-sync",
+  "keywords": [
+    "deploy",
+    "rsync",
+    "staging",
+    "sync"
+  ],
   "author": "Bartholomew Chwalek <bart.chwalek@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^2.5.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.6.2"
+  }
 }
