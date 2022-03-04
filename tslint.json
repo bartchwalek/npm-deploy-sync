@@ -39,6 +39,16 @@
     "max-classes-per-file": false,
     "no-unused-expression": false,
     "prefer-const": false,
-    "no-empty-interface": false
+    "no-empty-interface": false,
+    "variable-name": {
+      "options": [
+        "check-format",
+        "allow-leading-underscore",
+        "allow-pascal-case",
+        "allow-snake-case",
+        "allow-trailing-underscore",
+        "require-const-for-all-caps"
+      ]
+    }
   }
 }
