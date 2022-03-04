@@ -1,32 +1,3 @@
-//ERROR: 4:17    no-var-requires       require statement not part of an import statement
-//ERROR: 8:16    array-type            Array type using 'Array<T>' is forbidden. Use 'T[]' instead.
-//ERROR: 11:21   variable-name         variable name clashes with keyword/type
-//ERROR: 14:17   array-type            Array type using 'Array<T>' is forbidden. Use 'T[]' instead.
-//ERROR: 15:17   array-type            Array type using 'Array<T>' is forbidden. Use 'T[]' instead.
-//ERROR: 16:12   array-type            Array type using 'Array<T>' is forbidden. Use 'T[]' instead.
-//ERROR: 17:12   array-type            Array type using 'Array<T>' is forbidden. Use 'T[]' instead.
-//ERROR: 104:1   max-classes-per-file  A maximum of 1 class per file is allowed.
-//ERROR: 113:22  array-type            Array type using 'Array<T>' is forbidden. Use 'T[]' instead.
-//ERROR: 114:20  array-type            Array type using 'Array<T>' is forbidden. Use 'T[]' instead.
-//ERROR: 128:13  no-unused-expression  unused expression, expected an assignment or function call
-//ERROR: 128:31  no-console            Calls to 'console.log' are not allowed.
-//ERROR: 138:9   no-unused-expression  unused expression, expected an assignment or function call
-//ERROR: 138:27  no-console            Calls to 'console.log' are not allowed.
-//ERROR: 191:9   no-unused-expression  unused expression, expected an assignment or function call
-//ERROR: 191:27  no-console            Calls to 'console.log' are not allowed.
-//ERROR: 192:9   no-unused-expression  unused expression, expected an assignment or function call
-//ERROR: 192:27  no-console            Calls to 'console.log' are not allowed.
-//ERROR: 198:13  prefer-const          Identifier 'argArray' is never reassigned; use 'const' instead of 'let'.
-//ERROR: 198:23  array-type            Array type using 'Array<T>' is forbidden. Use 'T[]' instead.
-//
-///home/bchwalek/work/perso/remote/npm-deploy-sync/src/rsync/index.ts:3:18
-//ERROR: 3:18    no-empty-interface    An empty interface is equivalent to `{}`.
-//ERROR: 7:18    no-empty-interface    An empty interface is equivalent to `{}`.
-//ERROR: 54:17   no-console            Calls to 'console.log' are not allowed.
-//ERROR: 57:17   no-console            Calls to 'console.log' are not allowed.
-//ERROR: 58:17   no-console            Calls to 'console.log' are not allowed.
-
-
 {
   "extends": [
     "tslint:recommended",
