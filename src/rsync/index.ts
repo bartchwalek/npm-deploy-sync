@@ -136,5 +136,4 @@ export class Rsync extends CommandShell {
     this.addOption(`--exclude=${globPattern}`);
     return this;
   }
-
 }
