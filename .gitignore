@@ -41,7 +41,7 @@ build/Release
 node_modules/
 /lib
 jspm_packages/
-
+.idea
 # TypeScript v1 declaration files
 typings/
 
