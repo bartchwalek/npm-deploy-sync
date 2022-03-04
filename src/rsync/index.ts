@@ -50,10 +50,6 @@ export class Rsync extends CommandShell {
     return this;
   }
 
-  public exclude(): Rsync {
-    return this;
-  }
-
   public update(): Rsync {
     this.addFlag('u');
     return this;
@@ -135,4 +131,10 @@ export class Rsync extends CommandShell {
     this.remotePath = remotePath;
     return this;
   }
+
+  public exclude(globPattern: string): Rsync {
+    this.addOption(`--exclude=${globPattern}`);
+    return this;
+  }
+
 }
