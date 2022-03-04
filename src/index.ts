@@ -4,6 +4,6 @@ export class DeploySync {
   }
 }
 
-let deploySync = new DeploySync();
+const deploySync = new DeploySync();
 
-//module.exports = deploySync;
+// module.exports = deploySync;
