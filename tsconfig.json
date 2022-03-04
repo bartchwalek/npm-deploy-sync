@@ -6,7 +6,7 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "lib",
-    "allowJs": true,
+    "allowJs": false,
     "declaration": true
   },
   "include": ["src"],
