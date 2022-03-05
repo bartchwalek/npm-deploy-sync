@@ -1,7 +1,5 @@
-import { DeploySync } from '../index';
-import { Rsync } from '../rsync';
+import {DeploySync} from '../deploy-sync';
 
 test('DeploySync', () => {
-  const d = new DeploySync();
-  expect<string>(d.className).toBe('DeploySync');
+  expect<string>(DeploySync.className).toBe('DeploySync');
 });
