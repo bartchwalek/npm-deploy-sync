@@ -4,6 +4,9 @@
     "tslint-config-prettier"
   ],
   "rules": {
+    "no-bitwise": false,
+    "no-eval": false,
+    "no-shadowed-variable": false,
     "one-variable-per-declaration": false,
     "no-console": false,
     "no-var-requires": false,

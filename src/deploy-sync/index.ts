@@ -430,12 +430,12 @@ export class Deployment extends Hashable {
         results.startTime = start;
         results.endTime = end;
 
-        //if (this.modified) {
+        // if (this.modified) {
         // this is a new config of deployment.
         return this.save(undefined, results);
-        //}
+        // }
 
-        //return this;
+        // return this;
 
     }
 
@@ -485,7 +485,7 @@ export class DeploySync {
         });
     }
 
-    public static newDeployer(name: string | Object): Deployer {
+    public static newDeployer(name: string | object): Deployer {
         let deployer: Deployer;
         if (typeof name === 'string') {
             if (!DeploySync.deployers.has(name)) {
