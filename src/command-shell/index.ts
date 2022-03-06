@@ -136,7 +136,7 @@ export class CommandShell implements CommonExecutor<any> {
     lastArgumentPreProcessor?: (string) => string,
     argumentsPreprocessMap?: string,
     preConstructFn?: (any?) => any,
-    executor?: (any?) => any
+    executor?: (any?) => any,
   ) {
     this.command = command;
     this.flagsPrefix = flagsPrefix;
@@ -153,7 +153,6 @@ export class CommandShell implements CommonExecutor<any> {
       this.options.push(key);
     }
   }
-
 
   public async execute(...args) {
     return this.executorFn ? this.executorFn(...args) : Promise.resolve();
