@@ -84,7 +84,7 @@ class ExecutionController {
       });
     });
 
-    childProcess.stderr.on('close', (data) => {
+    childProcess.on('close', (data) => {
       this.listeners.close.forEach((fn) => {
         fn(data);
       });
@@ -101,7 +101,11 @@ export interface ExecutionDescriptors {
   options?: { [index: string]: string };
 }
 
-export class CommandShell {
+export interface CommonExecutor<T> {
+  execute: (any) => Promise<T>;
+}
+
+export class CommandShell implements CommonExecutor<any> {
   protected debugLevel = 5;
   private prefix: string = '';
   protected command: string;
@@ -123,6 +127,8 @@ export class CommandShell {
 
   private preConstructFn: (any?) => any;
 
+  private executorFn: (any?) => any;
+
   constructor(
     command: string,
     flagsPrefix: string = '-',
@@ -130,6 +136,7 @@ export class CommandShell {
     lastArgumentPreProcessor?: (string) => string,
     argumentsPreprocessMap?: string,
     preConstructFn?: (any?) => any,
+    executor?: (any?) => any
   ) {
     this.command = command;
     this.flagsPrefix = flagsPrefix;
@@ -137,6 +144,7 @@ export class CommandShell {
     this.lastArgProcess = lastArgumentPreProcessor;
     this.argumentsPreprocessMap = argumentsPreprocessMap;
     this.preConstructFn = preConstructFn;
+    this.executorFn = executor;
   }
 
   protected addOption(key: string, comment: string = '') {
@@ -144,6 +152,11 @@ export class CommandShell {
       this.isDebug() && console.log('Added option ', key, ` ## ${comment}`);
       this.options.push(key);
     }
+  }
+
+
+  public async execute(...args) {
+    return this.executorFn ? this.executorFn(...args) : Promise.resolve();
   }
 
   protected isDebug(): boolean {
