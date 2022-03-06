@@ -254,7 +254,13 @@ class DeployOptions<T = Rsync> {
     }
 
     public getDescriptor(): string {
-        return ``;
+        return Object.entries(this.config).map(([k,v]) => {
+            if(typeof v === 'boolean' && v) {
+                return k;
+            } else {
+                return ""
+            }
+        }).join(' ');
     }
 }
 
@@ -390,7 +396,8 @@ export class Deployment extends Hashable {
 
     public save(newid: string = this.getDescriptor(), attachedResults: ExecutionResults = null): Deployment {
         newid += '-' + Math.floor(Math.random() * 10000000);
-        const deployer = new Deployer(this.getDescriptor(), this.deploySource, this.deployUser, this.deployOptions, this.deployServer);
+        console.log(`[DeploySync] :: Adding new deployment with id: ${newid}`);
+        const deployer = new Deployer(this.getDescriptor(), this.deploySource, this.deployUser, this.deployOptions, this.deployServer, this.deployDestination);
         return DeploySync.newDeployment(newid, deployer, true, attachedResults);
     }
 
@@ -457,14 +464,23 @@ export class DeploySync {
     }
 
     public static listDeployments(): void {
-        DeploySync.deployments.forEach((deployment) => {
+        DeploySync.deployments.forEach((deployment, id) => {
             console.log(`------------------------------------------------------------------------------`);
-            console.log(`Deployment :: ${deployment.toString()}`);
+            console.log(`Deployment :: ${id}`);
             console.log(`Source      : ${deployment.getDeployer().getSource()} : ${deployment.getDeployer().getSource().path}`);
             console.log(`User        : ${deployment.getDeployer().getUser()}`);
             console.log(`Server      : ${deployment.getDeployer().getServer()} : ${deployment.getDeployer().getServer().host}`);
             console.log(`Destination : ${deployment.getDeployer().getDestination()} : ${deployment.getDeployer().getDestination().path}`);
             console.log(`Options     : ${deployment.getDeployer().getOptions()} : ${deployment.getDeployer().getOptions().getDescriptor()}`);
+            if(deployment.getResults()) {
+             let r = deployment.getResults();
+             console.log(`Succeeded  : ${r.success}`);
+             console.log(`Started    : ${new Date(r.startTime).toISOString()}`)
+             console.log(`Ended      : ${new Date(r.endTime).toISOString()}`)
+                if(r.hasError) {
+                    console.log(`Error:      : ${r.description}`)
+                }
+            }
             console.log(`------------------------------------------------------------------------------`);
         });
     }
@@ -503,6 +519,7 @@ export class DeploySync {
                     }
                 }
             }
+            DeploySync.deployments.set(id, deployment);
         } else {
             if (overwrite) {
                 DeploySync.deployments.delete(id);
