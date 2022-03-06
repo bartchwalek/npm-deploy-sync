@@ -148,7 +148,7 @@ export class Rsync extends CommandShell {
                     this.logOut && console.log('Error in command: ', this.command);
                     this.logOut && console.log(error);
                     localError = error;
-                    //reject(error);
+                    // reject(error);
                 })
                 .onData((data) => {
                     this.logOut && console.log(data.toString());
