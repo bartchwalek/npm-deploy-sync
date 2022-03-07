@@ -65,7 +65,7 @@ class ExecutionController {
 
   public execute(pre?) {
     const childProcess = this.childProcessFactory();
-    if(pre) {
+    if (pre) {
       spawn(pre.command, pre.args).stdout.pipe(childProcess.stdin);
     }
     this.process = childProcess;
@@ -254,8 +254,6 @@ export class CommandShell implements CommonExecutor<any> {
       kvs = '',
       lastArg = '';
 
-
-
     const addFlags = () => {
       if (this.flags.length > 0) {
         flags = this.flags.join('');
@@ -273,7 +271,7 @@ export class CommandShell implements CommonExecutor<any> {
       for (const sp of this.special) {
         argArray.push(sp);
       }
-    }
+    };
 
     const addKvArguments = () => {
       for (const kv of this.kvArgumentMap.entries()) {
