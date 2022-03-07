@@ -21,8 +21,7 @@
         "allow-leading-underscore",
         "allow-pascal-case",
         "allow-snake-case",
-        "allow-trailing-underscore",
-        "require-const-for-all-caps"
+        "allow-trailing-underscore"
       ]
     }
   }

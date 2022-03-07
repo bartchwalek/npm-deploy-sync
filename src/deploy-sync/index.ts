@@ -543,7 +543,7 @@ export class Deployment extends Hashable {
         }
 
         if (!executor) {
-            executor = new Rsync({useSshPass: useSSHPASS, useGPG: useGPG});
+            executor = new Rsync({useSshPass: useSSHPASS, useGPG});
         }
 
         this.deployOptions.configure(executor);
@@ -607,7 +607,7 @@ export class DeploySync {
     }
 
     public static listDeployments(): string {
-        var str = '';
+        let str = '';
         DeploySync.deployments.forEach((deployment, id) => {
             str += deployment.getReport(id);
         });
