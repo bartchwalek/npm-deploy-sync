@@ -11,6 +11,8 @@ The library will allow deploying compiled code on a remote server using credenti
 
 Version 1.0.7: Fixed Rsync wrapper and created DeploySync with config loading, deployment and reporting.
 
+Version 1.0.8: Added handling of cleartext and gpg authentication, using sshpass and gpg in linux.
+
 ---
 
 ### USAGE
