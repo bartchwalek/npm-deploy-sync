@@ -63,8 +63,11 @@ class ExecutionController {
     return this;
   }
 
-  public execute() {
+  public execute(pre?) {
     const childProcess = this.childProcessFactory();
+    if(pre) {
+      spawn(pre.command, pre.args).stdout.pipe(childProcess.stdin);
+    }
     this.process = childProcess;
     childProcess.stdout.on('data', (data) => {
       this.listeners.stdoutdata.forEach((fn) => {
@@ -129,6 +132,8 @@ export class CommandShell implements CommonExecutor<any> {
 
   private executorFn: (any?) => any;
 
+  private special: any[];
+
   constructor(
     command: string,
     flagsPrefix: string = '-',
@@ -154,8 +159,16 @@ export class CommandShell implements CommonExecutor<any> {
     }
   }
 
+  public toString() {
+    return this.command;
+  }
+
   public async execute(...args) {
     return this.executorFn ? this.executorFn(...args) : Promise.resolve();
+  }
+
+  protected setPrefix(prefix: string): void {
+    this.prefix = prefix;
   }
 
   protected isDebug(): boolean {
@@ -225,6 +238,10 @@ export class CommandShell implements CommonExecutor<any> {
     return new ExecutionController(controller, command);
   }
 
+  protected addSpecial(spAr: any[]) {
+    this.special = spAr;
+  }
+
   private construct(): SpawnArgs {
     if (this.preConstructFn) {
       this.preConstructFn();
@@ -236,6 +253,8 @@ export class CommandShell implements CommonExecutor<any> {
       opts = '',
       kvs = '',
       lastArg = '';
+
+
 
     const addFlags = () => {
       if (this.flags.length > 0) {
@@ -249,6 +268,13 @@ export class CommandShell implements CommonExecutor<any> {
         argArray.push(opt);
       }
     };
+
+    const addSpecial = () => {
+      for (const sp of this.special) {
+        argArray.push(sp);
+      }
+    }
+
     const addKvArguments = () => {
       for (const kv of this.kvArgumentMap.entries()) {
         argArray.push(kv[0]);
@@ -284,6 +310,10 @@ export class CommandShell implements CommonExecutor<any> {
         switch (el) {
           case '$flags':
             addFlags();
+            break;
+
+          case '$special':
+            addSpecial();
             break;
 
           case '$options':

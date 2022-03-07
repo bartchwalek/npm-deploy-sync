@@ -114,5 +114,50 @@ Here is the configuration file used (deploy.conf.json)
 6. Other executors can be implemented (scp?)
 
 ---
+### Security and authentication
 
+Authentication, added in 1.0.8
+
+Is either cleartext, gpg or you usual pub/priv key pairs as rsync uses ssh by default.
+
+* npm-deploy-sync is dependant on some Linux libraries                 
+* The default executor for deployments is Rsync, so please have rsync installed      
+* For automated authentication using passwords, have sshpass installed               
+* If you specify a .gpg file, gpg will be used in combination with sshpass for rsync
+* SECURITY: preferably do not use cleartext passwords, but priv/pub keys or at least gpg
+
+In the configuration here is the user structure:
+
+```json 
+
+  "users": [
+    {
+      "username": "insecureuser",
+      "comment": "General user",
+      "type": "normal",
+      "group": "users",
+      "authentication": {
+        "password": "mycleartextpasswordinsecurehere"
+      }
+    },
+    {
+      "username": "secureduser",
+      "comment": "Local user",
+      "type": "normal",
+      "group": "users",
+      "authentication": {
+        "file": ".pass.gpg"
+      }
+    }
+  ]
+
+```
+
+---
+
+
+I am relying on the premise that you should know how to secure your local passwords and use the most
+secure connection you can in your situation, hence know how to use pub/private keys and/or gpg.
+Cleartext is provided as convenience when you feel you just need to get it done and will not leave
+the passwords in the conf file...
 
