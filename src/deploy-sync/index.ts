@@ -11,6 +11,16 @@ console.log('If you specify a .gpg file, gpg will be used in combination with ss
 console.log('SECURITY: preferably do not use cleartext passwords, but priv/pub keys or at least gpg');
 console.log('--------------------------------------------------------------------------------------');
 
+// @TODO: adapter for scp
+// @TODO: adapter for sshfs
+// @TODO: adapter for nc (netcat) + ssh
+
+// @TODO: create a SSH wrapper for running commands on remote system easily (spawn + stdin)
+// @TODO: add ports to server configs
+// @TODO: add GPG signing for deployments?
+// @TODO: investigate other security measures.
+
+
 declare global {
   interface String {
     hash: () => number;
