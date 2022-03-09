@@ -1,6 +1,6 @@
 {
   "name": "npm-deploy-sync",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Deploy compiled code to server using rsync on linux",
   "main": "lib/index.js",
   "scripts": {

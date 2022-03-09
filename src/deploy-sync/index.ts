@@ -20,7 +20,6 @@ console.log('-------------------------------------------------------------------
 // @TODO: add GPG signing for deployments?
 // @TODO: investigate other security measures.
 
-
 declare global {
   interface String {
     hash: () => number;
