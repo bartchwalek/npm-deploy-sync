@@ -83,7 +83,7 @@ export class ExecutionController {
 
     private writeOut(data): void {
         if (this.stdIn) {
-            //console.log('Writing ', data);
+            // console.log('Writing ', data);
             this.stdIn.write(data);
         }
     }
