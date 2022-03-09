@@ -2,6 +2,7 @@
 logs
 *.log
 *.conf.json*
+*.local.*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -45,6 +46,7 @@ node_modules/
 /lib
 jspm_packages/
 .idea
+src/local/
 # TypeScript v1 declaration files
 typings/
 
