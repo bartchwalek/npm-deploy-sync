@@ -235,6 +235,7 @@ export class CommandShell implements CommonExecutor<any> {
     argumentsPreprocessMap?: string,
     preConstructFn?: (any?) => any,
     executor?: (any?) => any,
+    debugLevel: number = 5
   ) {
     this.command = command;
     this.flagsPrefix = flagsPrefix;
@@ -243,6 +244,7 @@ export class CommandShell implements CommonExecutor<any> {
     this.argumentsPreprocessMap = argumentsPreprocessMap;
     this.preConstructFn = preConstructFn;
     this.executorFn = executor;
+    this.debugLevel = debugLevel;
   }
 
   protected addOption(key: string, comment: string = '') {
