@@ -81,7 +81,7 @@ export class SecureShell extends CommandShell {
         })
         .write(dataToWrite)
         .onData((data) => {
-          console.log(data);
+          this.isDebug() && console.log(data);
         })
         .execute();
     });
