@@ -235,7 +235,7 @@ export class CommandShell implements CommonExecutor<any> {
     argumentsPreprocessMap?: string,
     preConstructFn?: (any?) => any,
     executor?: (any?) => any,
-    debugLevel: number = 5
+    debugLevel: number = 5,
   ) {
     this.command = command;
     this.flagsPrefix = flagsPrefix;
