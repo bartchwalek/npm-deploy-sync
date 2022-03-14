@@ -561,10 +561,11 @@ export class Deployment extends Hashable {
 
     if (executor instanceof Rsync) {
       DEBUGGER(this, 'Configuring Rsync');
-      (executor as Rsync).from(this.deploySource.path)
-          .into(this.deployDestination.path)
-          .as(this.deployUser.username)
-          .to(this.deployServer.host);
+      (executor as Rsync)
+        .from(this.deploySource.path)
+        .into(this.deployDestination.path)
+        .as(this.deployUser.username)
+        .to(this.deployServer.host);
       if (useSSHPASS) {
         (executor as Rsync).setClearTextPassword(this.deployUser.pass);
       }
