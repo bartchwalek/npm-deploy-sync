@@ -15,6 +15,8 @@
     "no-unused-expression": false,
     "prefer-const": false,
     "no-empty-interface": false,
+    "ban-types": false,
+    "radix": false,
     "variable-name": {
       "options": [
         "check-format",
